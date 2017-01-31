@@ -1,0 +1,22 @@
+/* No CSS yet */
+h1 {
+  font-family: Helvetica, sans-serif;
+}
+
+h3 {
+  font-family: Helvetica, sans-serif;
+}
+
+button {
+  margin: 0 5px;
+}
+
+div .right {
+  float: left;
+  width: 25%;
+}
+
+div .left {
+  float: left;
+  width: 42%;
+}
