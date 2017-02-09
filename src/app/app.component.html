@@ -3,31 +3,15 @@
 <div>
   <h3>My Tasks</h3>
   <md-list>
-    <md-list-item *ngFor="let task of tasks; let i = index">
-      <div class="left">
-        {{task}}
-      </div>
-      <div class="right">
-        <button md-mini-fab (click)="deleteTask(i)">X</button>
-        <button md-raised-button (click)="editModeToggle(i)">{{editMode[i] ? "Cancel" : "Edit"}}</button>
-      </div>
-      <div *ngIf="editMode[i]">
-        <md-input-container>
-          <input md-input placeholder="Edit task" #newTask>
-        </md-input-container>
-        <button md-raised-button (click)="editTask(i, newTask.value); newTask.value=''">
-          Submit
-        </button>
-      </div>
-    </md-list-item>
+    <app-item *ngFor="let task of tasks" [task]="task" (taskDeleted)="onTaskDeleted(task)"></app-item>
   </md-list>
 </div>
 <hr>
 <div>
   <md-input-container>
-    <input md-input placeholder="New task" #taskName>
+    <input md-input placeholder="New task" [(ngModel)]="task">
   </md-input-container>
-  <button md-raised-button (click)="addTask(taskName.value); taskName.value=''">
+  <button md-raised-button (click)="addTask()">
     Add
   </button>
 </div>

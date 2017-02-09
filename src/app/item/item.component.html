@@ -1,0 +1,17 @@
+<md-list-item>
+  <div class="left">
+    {{task}}
+  </div>
+  <div class="right">
+    <button md-mini-fab (click)="deleteTask()">X</button>
+    <button md-raised-button (click)="editModeToggle()">{{editMode ? "Cancel" : "Edit"}}</button>
+  </div>
+  <div *ngIf="editMode">
+    <md-input-container>
+      <input md-input placeholder="Edit task" #edTask>
+    </md-input-container>
+    <button md-raised-button (click)="editTask(edTask.value)">
+      Submit
+    </button>
+  </div>
+</md-list-item>
