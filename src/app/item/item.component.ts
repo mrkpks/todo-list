@@ -13,6 +13,7 @@ export class ItemComponent implements OnInit {
   constructor() { }
 
   editTask(edTask: string) {
+  // FIXME: Event handlers' identifiers should follow the pattern "on<EventDescription>", e.g. onEditedTaskSubmit.
     this.task = edTask;
   }
 
@@ -26,6 +27,7 @@ export class ItemComponent implements OnInit {
     } else {
       this.editMode = true;
     }
+    // FIXME: Rewrite the function's body in 1 line.
   }
 
   ngOnInit() {
