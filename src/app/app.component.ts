@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Task } from './task';
 
 @Component({
   selector: 'todo-list',
@@ -7,29 +8,23 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Todo List';
-  tasks: string[];
-  editModeArr: boolean[] = [];
-  i: number;
-  task: string;
+  tasks: Task[];
+  task: Task = {id: 2, name: ''};
 
   constructor() {
-    this.tasks = ['Learn Angular 2', 'Get a job'];
-
-    for(let i = 0; i < Array.length; i++) {
-      this.editModeArr[i] = false;
-    }
+    this.tasks = [
+      {id: 0, name: 'Learn Angular 2'},
+      {id: 1, name: 'Get a job'}
+    ];
   }
 
-  addTask() {
-    if (!this.task) { return; }
+  onAddTask() {
+    if (this.task.name === '') { return; }
     this.tasks.push(this.task);
-    this.task = '';
+    this.task = {id: this.task.id + 1, name: ''};
   }
 
-  onTaskDeleted(task: string){
-    var idx = this.tasks.findIndex((elt) => (elt === task));
-    if (idx != -1) {
-      this.tasks.splice(idx, 1);
-    }
+  onTaskDeleted(id: number){
+    this.tasks = this.tasks.filter(item => item.id != id);
   }
 }

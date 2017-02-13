@@ -3,17 +3,15 @@
 <div>
   <h3>My Tasks</h3>
   <md-list>
-    <app-item *ngFor="let task of tasks" [task]="task" (taskDeleted)="onTaskDeleted(task)"></app-item>
+    <app-item *ngFor="let task of tasks" [task]="task" (taskDeleted)="onTaskDeleted(task.id)"></app-item>
   </md-list>
 </div>
 <hr>
 <div>
   <md-input-container>
-    <input md-input placeholder="New task" [(ngModel)]="task">
+    <input md-input placeholder="New task" [(ngModel)]="task.name">
   </md-input-container>
-  <button md-raised-button (click)="addTask()">
+  <button md-raised-button (click)="onAddTask()">
     Add
   </button>
 </div>
-
-<!-- <input type="text" name="task" [(ngModel)]="task" -->

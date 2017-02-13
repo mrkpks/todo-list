@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Task } from '../task';
 
 @Component({
   selector: 'app-item',
@@ -6,26 +7,22 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
-  @Input() task: string;
+  @Input() task: Task;
   @Output() taskDeleted: EventEmitter<any> = new EventEmitter();
   editMode: boolean;
 
   constructor() { }
 
-  editTask(edTask: string) {
-    this.task = edTask;
+  onEditTask(edTask: string) {
+    this.task.name = edTask;
   }
 
-  deleteTask() {
+  onDeleteTask() {
     this.taskDeleted.emit();
   }
 
-  editModeToggle() {
-    if(this.editMode == true) {
-      this.editMode = false;
-    } else {
-      this.editMode = true;
-    }
+  onEditModeToggle() {
+    this.editMode == true ? this.editMode = false : this.editMode = true;
   }
 
   ngOnInit() {
